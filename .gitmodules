@@ -1,0 +1,3 @@
+[submodule "sub/Pomobot"]
+	path = sub/Pomobot
+	url = https://github.com/drakegawain/PomoBot.git
