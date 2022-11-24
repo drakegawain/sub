@@ -1,9 +1,13 @@
 from cement import Controller, ex
-from PomoBot import main as start_
+from PomoBot.src.boot import start
+from PomoBot import main as boot
 from PomoBot.src.Configs import configs as cfg
-from multiprocessing import Process
+import nextcord
+import multiprocessing
+import threading
+import time
 import asyncio
-import os
+import os, sys
 
 
 class Items(Controller):
@@ -12,16 +16,26 @@ class Items(Controller):
         stacked_type = 'embedded'
         stacked_on = 'base'
     token = os.environ['TOKEN']
-    client_ = cfg.client
-    
+    thrd = None
+    data = None
+
     @ex(help='start')
     def start(self):
-        start_.main()
+        #Must improve this
+        os.system("pm2 start F:\Thales\pomobot\PomoBot\main.py --name bot --interpreter python")
         pass
 
     @ex(help="show total guilds")
     def tot(self):
-        loop = asyncio.get_event_loop()
-        print(cfg.client.guilds)
+        print(self.data)
+        pass
+
+    @ex(help="kill thread")
+    def kill(self):
+        os.system("pm2 kill")
         pass
         
+    @ex(help="go")    
+    def kick(self):
+        boot.main()
+        return
