@@ -1,7 +1,7 @@
 from cement import Controller, ex
-from PomoBot.src.boot import start
-from PomoBot import main as boot
-from PomoBot.src.Configs import configs as cfg
+from ..PomoBot.src.boot import start
+from ..PomoBot import main as boot
+from ..PomoBot.src.Configs import configs as cfg
 import nextcord
 import multiprocessing
 import threading
@@ -22,7 +22,7 @@ class Items(Controller):
     @ex(help='start')
     def start(self):
         #Must improve this
-        os.system("pm2 start F:\Thales\pomobot\PomoBot\main.py --name bot --interpreter python")
+        os.system("pm2 start sub/PomoBot/main.py --name bot --interpreter python")
         pass
 
     @ex(help="show total guilds")
